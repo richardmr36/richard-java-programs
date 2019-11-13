@@ -23,7 +23,7 @@ public abstract class Heap {
         return getLeftChildIndex(index) < size;
     }
 
-    protected boolean hasRighttChild(int index) {
+    protected boolean hasRightChild(int index) {
         return getRightChildIndex(index) < size;
     }
 
@@ -50,32 +50,30 @@ public abstract class Heap {
     }
 
     protected void ensureExtraCapacity() {
-        if(size == capacity) {
-            items = Arrays.copyOf(items, capacity*2);
+        if (size == capacity) {
+            items = Arrays.copyOf(items, capacity * 2);
             capacity *= 2;
         }
     }
 
     public int peek() {
-        if (size==0) throw new IllegalStateException();
+        if (size == 0) throw new IllegalStateException();
         return items[0];
     }
 
     public void printItems() {
-        for(int i=0;i<size;i++) {
-            System.out.print(items[i]+"  ");
+        for (int i = 0; i < size; i++) {
+            System.out.print(items[i] + "  ");
         }
     }
 
     public boolean isEmpty() {
-        if(size == 0)
-            return true;
-        return false;
+        return size == 0;
     }
 
     public int poll() {
         int item = peek();
-        items[0] = items[size-1];
+        items[0] = items[size - 1];
         size--;
         heapifyDown();
         return item;
@@ -89,5 +87,6 @@ public abstract class Heap {
     }
 
     public abstract void heapifyUp();
+
     public abstract void heapifyDown();
 }

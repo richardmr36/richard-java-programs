@@ -8,18 +8,14 @@ public class Sudoku {
     public static final int MAX_NUMBER = 9;
     public static final int BOX_SIZE = 3;
 
-    private int[][] sudokuTable;
+    private static int[][] sudokuTable;
 
-    public void solve(int[][] sudokuTable) {
-        this.sudokuTable = sudokuTable;
-
-        if (solveSudoku(0, 0))
-            printSolution();
-        else
-            System.out.println("There is no solution");
+    public static void solve(int[][] table) {
+        sudokuTable = table;
+        solveSudoku(0, 0);
     }
 
-    private boolean solveSudoku(int row, int column) {
+    private static boolean solveSudoku(int row, int column) {
         if (row == BOARD_SIZE && ++column == BOARD_SIZE)
             return true;
 
@@ -43,20 +39,17 @@ public class Sudoku {
         return false;
     }
 
-    private boolean isValid(int row, int column, int number) {
+    private static boolean isValid(int row, int column, int number) {
         if (isNumberAlreadyPresentInRow(row, number))
             return false;
 
         if (isNumberAlreadyPresentInColumn(column, number))
             return false;
 
-        if (isNumberAlreadyPresentInBox(row, column, number))
-            return false;
-
-        return true;
+        return !isNumberAlreadyPresentInBox(row, column, number);
     }
 
-    private boolean isNumberAlreadyPresentInBox(int row, int column, int number) {
+    private static boolean isNumberAlreadyPresentInBox(int row, int column, int number) {
         int boxRowOffset = (row / 3) * BOX_SIZE;
         int boxColumnOffset = (column / 3) * BOX_SIZE;
 
@@ -68,7 +61,7 @@ public class Sudoku {
         return false;
     }
 
-    private boolean isNumberAlreadyPresentInColumn(int column, int number) {
+    private static boolean isNumberAlreadyPresentInColumn(int column, int number) {
         for (int i = 0; i < BOARD_SIZE; i++)
             if (sudokuTable[i][column] == number)
                 return true;
@@ -76,7 +69,7 @@ public class Sudoku {
         return false;
     }
 
-    private boolean isNumberAlreadyPresentInRow(int row, int number) {
+    private static boolean isNumberAlreadyPresentInRow(int row, int number) {
         for (int i = 0; i < BOARD_SIZE; i++)
             if (sudokuTable[row][i] == number)
                 return true;
@@ -84,11 +77,11 @@ public class Sudoku {
         return false;
     }
 
-    private boolean isValueInitialisedForGivenPosition(int row, int column) {
+    private static boolean isValueInitialisedForGivenPosition(int row, int column) {
         return sudokuTable[row][column] != 0;
     }
 
-    private void printSolution() {
+    private static void printSolution() {
         for (int i = 0; i < BOARD_SIZE; i++) {
             if (i % 3 == 0) System.out.println();
 
@@ -97,7 +90,6 @@ public class Sudoku {
                 System.out.print(sudokuTable[i][j] + Constants.SINGLE_SPACE);
             }
             System.out.println();
-            ;
         }
     }
 }

@@ -5,6 +5,35 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SubarrayProblems {
+    public static int findMaxSubArraySum(int[] arr) {
+        int currentMax = arr[0];
+        int maxSoFar = arr[0];
+
+        for (int i = 1; i < arr.length; i++) {
+            currentMax = Math.max(arr[i], currentMax + arr[i]);
+            maxSoFar = Math.max(currentMax, maxSoFar);
+        }
+
+        return maxSoFar;
+    }
+
+    public static int[] findMaxSubArray(int[] arr) {
+        int currentMax = arr[0];
+        int maxSoFar = arr[0];
+        int startIndex = 0, endIndex = 0;
+
+        for (int i = 1; i < arr.length; i++) {
+            currentMax = Math.max(arr[i], currentMax + arr[i]);
+            if (currentMax == arr[i])
+                startIndex = i;
+            maxSoFar = Math.max(currentMax, maxSoFar);
+            if (maxSoFar == currentMax)
+                endIndex = i;
+        }
+
+        return Arrays.copyOfRange(arr, startIndex, endIndex + 1);
+    }
+
     public int findLengthOfLongestSubarrayDivisibleByK(int[] arr, int k) {
         Map<Integer, Integer> map = new HashMap<>();
         int n = arr.length;
@@ -14,7 +43,6 @@ public class SubarrayProblems {
             sum += arr[i];
             modArray[i] = ((sum % k) + k) % k; //Taking modulo twice due to possible negative sum
         }
-
 
         int max = 0;
         for (int i = 0; i < n; i++) {
@@ -65,18 +93,18 @@ public class SubarrayProblems {
 
         while (left < right) {
             sum = arr[left] + arr[right];
-            if(Math.abs(sum) < Math.abs(minSum)) {
+            if (Math.abs(sum) < Math.abs(minSum)) {
                 minSum = sum;
                 minLeft = left;
                 minRight = right;
             }
 
-            if(sum<0)
+            if (sum < 0)
                 left++;
             else
                 right--;
         }
 
-        System.out.println(arr[minLeft]+","+arr[minRight]);
+        System.out.println(arr[minLeft] + "," + arr[minRight]);
     }
 }
