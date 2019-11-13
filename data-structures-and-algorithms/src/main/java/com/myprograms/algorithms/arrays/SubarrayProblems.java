@@ -2,7 +2,9 @@ package com.myprograms.algorithms.arrays;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class SubarrayProblems {
     public static int findMaxSubArraySum(int[] arr) {
@@ -32,6 +34,52 @@ public class SubarrayProblems {
         }
 
         return Arrays.copyOfRange(arr, startIndex, endIndex + 1);
+    }
+
+    public static int[] findTwoElementsWhoseSumIsTheClosestToZero(int[] arr) {
+        Arrays.sort(arr);
+        int n = arr.length;
+
+        int left = 0;
+        int right = n - 1;
+
+        int minLeft = 0;
+        int minRight = n - 1;
+
+        int sum = 0;
+        int minSum = Integer.MAX_VALUE;
+
+        while (left < right) {
+            sum = arr[left] + arr[right];
+            if (Math.abs(sum) < Math.abs(minSum)) {
+                minSum = sum;
+                minLeft = left;
+                minRight = right;
+            }
+
+            if (sum < 0)
+                left++;
+            else
+                right--;
+        }
+
+        int[] result = new int[2];
+        result[0] = arr[minLeft];
+        result[1] = arr[minRight];
+        return result;
+    }
+
+    public static boolean isAnyOfContiguousSubarraySumZero(int[] arr) {
+        Set<Integer> sumSet = new HashSet<>();
+        int sum = 0;
+        for (int a : arr) {
+            sum += a;
+            if (a == 0 || sum == 0 || sumSet.contains(sum))
+                return true;
+            sumSet.add(sum);
+        }
+
+        return false;
     }
 
     public int findLengthOfLongestSubarrayDivisibleByK(int[] arr, int k) {
@@ -76,35 +124,5 @@ public class SubarrayProblems {
         }
 
         return result + modArray[0];
-    }
-
-    public void findTwoElementsWhoseSumIsTheClosestToZero(int[] arr) {
-        Arrays.sort(arr);
-        int n = arr.length;
-
-        int left = 0;
-        int right = n - 1;
-
-        int minLeft = 0;
-        int minRight = n - 1;
-
-        int sum = 0;
-        int minSum = Integer.MAX_VALUE;
-
-        while (left < right) {
-            sum = arr[left] + arr[right];
-            if (Math.abs(sum) < Math.abs(minSum)) {
-                minSum = sum;
-                minLeft = left;
-                minRight = right;
-            }
-
-            if (sum < 0)
-                left++;
-            else
-                right--;
-        }
-
-        System.out.println(arr[minLeft] + "," + arr[minRight]);
     }
 }
