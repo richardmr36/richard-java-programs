@@ -5,23 +5,20 @@ import java.util.Random;
 import com.myprograms.algorithms.utility.ArrayUtility;
 
 public class QuickSelect {
-    private int[] arr;
-
-    public int selectKthLargest(int[] arr, int k) {
-        this.arr = arr;
-        return selectKthLargest(0, arr.length - 1, k - 1);
+    public static int selectKthLargest(int[] arr, int k) {
+        return selectKthLargest(arr, 0, arr.length - 1, k - 1);
     }
 
-    private int selectKthLargest(int firstIndex, int lastIndex, int k) {
-        int pivot = findLargestPivotUsingHoaresAlgorithm(firstIndex, lastIndex);
+    private static int selectKthLargest(int[] arr, int firstIndex, int lastIndex, int k) {
+        int pivot = findLargestPivotUsingHoaresAlgorithm(arr, firstIndex, lastIndex);
         if (pivot > k)
-            return selectKthLargest(firstIndex, pivot - 1, k);
+            return selectKthLargest(arr, firstIndex, pivot - 1, k);
         else if (pivot < k)
-            selectKthLargest(pivot + 1, lastIndex, k);
+            selectKthLargest(arr, pivot + 1, lastIndex, k);
         return arr[k];
     }
 
-    private int findLargestPivotUsingHoaresAlgorithm(int firstIndex, int lastIndex) {
+    private static int findLargestPivotUsingHoaresAlgorithm(int[] arr, int firstIndex, int lastIndex) {
         int pivot = findRandomPivot(firstIndex, lastIndex);
         ArrayUtility.swap(arr, lastIndex, pivot);
 
@@ -33,25 +30,24 @@ public class QuickSelect {
         return firstIndex;
     }
 
-    private int findRandomPivot(int firstIndex, int lastIndex) {
+    private static int findRandomPivot(int firstIndex, int lastIndex) {
         return new Random().nextInt(lastIndex - firstIndex + 1) + firstIndex;
     }
 
-    public int selectKthSmallest(int[] arr, int k) {
-        this.arr = arr;
-        return selectKthSmallest(0, arr.length - 1, k - 1);
+    public static int selectKthSmallest(int[] arr, int k) {
+        return selectKthSmallest(arr, 0, arr.length - 1, k - 1);
     }
 
-    private int selectKthSmallest(int firstIndex, int lastIndex, int k) {
-        int pivot = findSmallestPivotUsingHoaresAlgorithm(firstIndex, lastIndex);
+    private static int selectKthSmallest(int[] arr, int firstIndex, int lastIndex, int k) {
+        int pivot = findSmallestPivotUsingHoaresAlgorithm(arr, firstIndex, lastIndex);
         if (pivot > k)
-            return selectKthSmallest(firstIndex, pivot - 1, k);
+            return selectKthSmallest(arr, firstIndex, pivot - 1, k);
         else if (pivot < k)
-            return selectKthSmallest(pivot + 1, lastIndex, k);
+            return selectKthSmallest(arr, pivot + 1, lastIndex, k);
         return arr[k];
     }
 
-    private int findSmallestPivotUsingHoaresAlgorithm(int firstIndex, int lastIndex) {
+    private static int findSmallestPivotUsingHoaresAlgorithm(int[] arr, int firstIndex, int lastIndex) {
         int pivot = findRandomPivot(firstIndex, lastIndex);
         ArrayUtility.swap(arr, lastIndex, pivot);
 
