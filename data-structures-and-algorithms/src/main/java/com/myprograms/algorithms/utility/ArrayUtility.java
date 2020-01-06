@@ -22,6 +22,12 @@ public final class ArrayUtility {
         arr[j] = temp;
     }
 
+    public static void swap(char[] arr, int i, int j) {
+        char temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
     public static String[] removeEmptyStringItems(final String[] input) {
         List<String> outputList = new ArrayList<>();
         for (String str : input) {
@@ -108,5 +114,17 @@ public final class ArrayUtility {
             array[i++] = index;
 
         return array;
+    }
+
+    public static void reverse(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n / 2; i++)
+            ArrayUtility.swap(arr, i, n - i - 1);
+    }
+
+    public static void square(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n; i++)
+            arr[i] *= arr[i];
     }
 }

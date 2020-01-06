@@ -21,15 +21,8 @@ buildNumber.properties
 .idea
 
 # JAXB Classes
-lmsaccounting/implementation/lms-accounting-server/src/main/java/com/unisys/trans/logistics/lms/accounting/jaxb/
-lmscommon/implementation/lms-framework-server/src/main/java/com/unisys/trans/logistics/lms/framework/jaxb/
-lmscommon/implementation/lms-jaxb/src/main/java/
-
-# Payment channel Classes
-lmscommon/implementation/lms-payment-channel/src/generated/com/unisys/padss/
-
-#Integration test logs
-lmscommon/implementation/lms-integration-test/log
+generated/
+sun-jaxb.episode
 
 
 .gradle

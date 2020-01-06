@@ -1,7 +1,10 @@
 package com.myprograms.algorithms.stack;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Stack;
 
 public class OverlappingIntervals {
@@ -34,24 +37,24 @@ public class OverlappingIntervals {
     }
 
     public static Interval[] mergeOverlappingIntervals(Interval[] intervals) {
-        Comparator<Interval> intervalComparator = Comparator.comparingInt(o -> o.start);
-        Arrays.sort(intervals, intervalComparator.reversed());
-        int index = 0;
-        for (int i = 0; i < intervals.length; i++, index++) {
-            if (index != 0 && intervals[index - 1].start <= intervals[index].end) {
-                while (index != 0 && intervals[index - 1].start <= intervals[index].end) {
-                    intervals[index - 1].end = Math.max(intervals[index - 1].end, intervals[i].end);
-                    intervals[index - 1].start = Math.min(intervals[index - 1].start, intervals[i].start);
-                    index--;
-                }
+        Arrays.sort(intervals, Comparator.comparingInt(o -> o.start));
+        List<Interval> mergedList = new ArrayList<>();
+        Interval interval = intervals[0];
+
+        for(int i=1;i<intervals.length;i++) {
+            Interval current = intervals[i];
+            if(current.start <= interval.end) {
+                interval.end = Math.max(interval.end, current.end);
             }
-            else{
-                intervals[index] = intervals[i];
+            else {
+                mergedList.add(interval);
+                interval = current;
             }
         }
 
+        mergedList.add(interval);
 
-        Interval[] result = Arrays.copyOf(intervals, index);
+        Interval[] result = mergedList.toArray(new Interval[mergedList.size()]);
         Arrays.sort(result, Comparator.comparingInt(o -> o.start));
         return result;
     }
