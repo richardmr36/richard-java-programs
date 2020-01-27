@@ -1,5 +1,6 @@
 package com.myprograms.algorithms.backtracking;
 
+import com.myprograms.algorithms.utility.ArrayUtility;
 import com.myprograms.algorithms.utility.Constants;
 import com.myprograms.algorithms.utility.Printer;
 
@@ -7,14 +8,15 @@ public class NQueensProblem {
     private int[][] chessBoard;
     private int noOfQueens;
 
-    public void solve(int noOfQueens) {
+    public int[][] solve(int noOfQueens) {
         this.chessBoard = new int[noOfQueens][noOfQueens];
+        ArrayUtility.fill(chessBoard, 0);
         this.noOfQueens = noOfQueens;
 
         if (setQueens(0))
-            printQueues();
-        else
-            System.out.println("There is no solution");
+            return chessBoard;
+
+        throw new IllegalStateException("There is no solution");
     }
 
     private void printQueues() {

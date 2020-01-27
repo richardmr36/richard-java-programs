@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import com.myprograms.algorithms.bitmanipulation.BitwiseOperators;
+
 public class SubarrayProblems {
     public static int findMaxSubArraySum(int[] arr) {
         int currentMax = arr[0];
@@ -82,6 +84,15 @@ public class SubarrayProblems {
         return false;
     }
 
+    public static long findTotalSumOfAllPossibleSubarrays(int[] arr) {
+        long result = 0;
+        int n = arr.length;
+        for (int i = 0; i < n; i++)
+            result += (arr[i] * (i + 1) * (n - i));
+
+        return result;
+    }
+
     public int findLengthOfLongestSubarrayDivisibleByK(int[] arr, int k) {
         Map<Integer, Integer> map = new HashMap<>();
         int n = arr.length;
@@ -124,5 +135,92 @@ public class SubarrayProblems {
         }
 
         return result + modArray[0];
+    }
+
+    public static int findCountOfSubarraysWithAtmostKOddNumbers(int[] arr, int k) {
+        /*int count = 0;
+        int n = arr.length;
+        int[] prefix = new int[n];
+        int odd = 0;
+
+        for (int i = 0; i < n; i++) {
+            prefix[odd]++;
+
+            if (BitwiseOperators.isOdd(arr[i]))
+                odd++;
+
+            if (odd >= k)
+                count += prefix[odd - k];
+        }
+
+        return count;*/
+
+        /*if (arr != null && arr.length > 0) {
+            int oddCount = 0, i = 0, last = -1;
+            Set<String> subArray = new HashSet<>();
+            StringBuilder sb = new StringBuilder();
+            while (i < arr.length) {
+                int num = arr[i];
+                if (num % 2 == 1) {
+                    oddCount++;
+                }
+                subArray.add(String.valueOf(num));
+                while (oddCount > k && last < i) {
+                    int pop = arr[++last];
+                    if (pop % 2 == 1) {
+                        oddCount--;
+                    }
+                    if (last +1 != i) {
+                        sb.replace(0, sb.indexOf(",") + 1, "");
+                        subArray.add(sb.toString());
+                    } else {
+                        sb = new StringBuilder();
+                    }
+                }
+
+                if (sb.length() > 0) {
+                    sb.append(",");
+                }
+                sb.append(num);
+                subArray.add(sb.toString());
+                i++;
+            }
+            while (last < arr.length) {
+                last++;
+                sb.replace(0, sb.indexOf(",") + 1, "");
+                subArray.add(sb.toString());
+            }
+            return subArray.size();
+        }
+        return 0;*/
+
+        int count = 0;
+        int n = arr.length;
+        // traverse for all possible
+        // subarrays
+        Set<String> set = new HashSet<>();
+        for (int i = 0; i < n; i++)
+        {
+            int odd = 0;
+            String str = "";
+            for (int j = i; j < n; j++)
+            {
+                if (arr[j] % 2 ==1)
+                    odd++;
+
+                // if count of odd numbers
+                // in subarray is m
+                if (odd <= k) {
+                    str += arr[j];
+                    str+=",";
+                    if(!set.contains(str)) {
+                        count++;
+                        set.add(str);
+                    }
+                }
+            }
+        }
+
+        return count;
     }
 }

@@ -13,5 +13,6 @@ public class KthLargestElementTest {
         int expected = 12;
         Assert.assertEquals(expected, KthLargestElement.findUsingSort(arr, k));
         Assert.assertEquals(expected, KthLargestElement.findUsingMaxHeap(arr, k));
+        Assert.assertEquals(expected, KthLargestElement.findUsingPriorityQueue(arr, k));
     }
 }

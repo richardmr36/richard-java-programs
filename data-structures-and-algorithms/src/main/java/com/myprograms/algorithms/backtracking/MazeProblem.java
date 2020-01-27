@@ -5,15 +5,15 @@ public class MazeProblem {
     private int[][] solutionTable;
     private int mazeSize;
 
-    public void solve(int[][] mazeTable) {
+    public int[][] solve(int[][] mazeTable) {
         this.mazeTable = mazeTable;
         this.mazeSize = mazeTable.length;
         this.solutionTable = new int[mazeSize][mazeSize];
 
         if (solveMaze(0, 0))
-            printSolution();
-        else
-            System.out.println("There is no solution");
+            return solutionTable;
+
+        throw new IllegalStateException("There is no solution");
     }
 
     private boolean solveMaze(int x, int y) {
@@ -44,10 +44,7 @@ public class MazeProblem {
     private boolean isValid(int x, int y) {
         if (x < 0 || x >= mazeSize) return false;
         if (y < 0 || y >= mazeSize) return false;
-
-        if (mazeTable[x][y] != 1) return false;
-
-        return true;
+        return mazeTable[x][y] == 1;
     }
 
     private boolean isFinished(int x, int y) {

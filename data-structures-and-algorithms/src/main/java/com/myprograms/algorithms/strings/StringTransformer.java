@@ -63,7 +63,7 @@ public class StringTransformer {
     public static void minNoOfOpsToTransformByDeletingOrInserting(String source, String target) {
         //https://www.geeksforgeeks.org/minimum-number-deletions-insertions-transform-one-string-another/
 
-        int lengthOfLongestCommonSubsequence = new LongestCommonSubsequence().findLongestCommonSubsequenceUsingDp(source, target);
+        int lengthOfLongestCommonSubsequence = LongestCommonSubsequence.findLongestCommonSubsequenceUsingDp(source, target);
         System.out.println("Minimum no of Deletions: " + (source.length() - lengthOfLongestCommonSubsequence));
         System.out.println("Minimum no of Insertions: " + (target.length() - lengthOfLongestCommonSubsequence));
     }

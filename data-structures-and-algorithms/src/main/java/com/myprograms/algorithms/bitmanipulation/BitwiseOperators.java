@@ -1,12 +1,12 @@
 package com.myprograms.algorithms.bitmanipulation;
 
 public class BitwiseOperators {
-    public boolean isPowerOfTwo(int x) {
+    public static boolean isPowerOfTwo(int x) {
         // x will check if x == 0 and !(x & (x - 1)) will check if x is a power of 2 or not
         return (x & (x - 1)) == 0;
     }
 
-    public void swapTwoNumbers(int x, int y) {
+    public static void swapTwoNumbers(int x, int y) {
         System.out.printf("Before swapping: x=%d, y=%d\n", x, y);
         x = x ^ y;
         y = x ^ y;
@@ -14,15 +14,15 @@ public class BitwiseOperators {
         System.out.printf("After swapping: x=%d, y=%d\n", x, y);
     }
 
-    public boolean isOdd(int num) {
+    public static boolean isOdd(int num) {
         return (num & 1) != 0;
     }
 
-    public boolean isMultipleOfFour(int num) {
+    public static boolean isMultipleOfFour(int num) {
         return (num & 3) == 0;
     }
 
-    public boolean isMultipleOfThree(int num) {
+    public static boolean isMultipleOfThree(int num) {
         int oddPositionBitCount = 0;
         int evenPositionBitCount = 0;
 

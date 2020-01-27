@@ -1,7 +1,7 @@
 package com.myprograms.algorithms.general;
 
 public class PrimeNumbers {
-    boolean isPrime(int n) {
+    public boolean isPrime(int n) {
         if (n <= 1) return false;
         if (n <= 3) return true;
 

@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 public class SubarrayProblemsTest {
@@ -44,5 +45,19 @@ public class SubarrayProblemsTest {
         int[] arr2 = {-3, 2, 3, 1, 6};
         assertTrue(SubarrayProblems.isAnyOfContiguousSubarraySumZero(arr1));
         assertFalse(SubarrayProblems.isAnyOfContiguousSubarraySumZero(arr2));
+    }
+
+    @Test
+    public void testFindTotalSumOfAllPossibleSubarrays() {
+        int[] arr = {3, 1, 2, 3};
+        Assert.assertEquals(20, SubarrayProblems.findTotalSumOfAllPossibleSubarrays(arr));
+    }
+
+    @Test
+    public void testFindCountOfSubarraysWithAtmostKOddNumbers() {
+        //int[] arr = {6, 3, 5,8};
+        //Assert.assertEquals(6, SubarrayProblems.findCountOfSubarraysWithAtmostKOddNumbers(arr, 1));
+        int[] arr = {2, 1, 2, 1, 3};
+        Assert.assertEquals(10, SubarrayProblems.findCountOfSubarraysWithAtmostKOddNumbers(arr, 2));
     }
 }

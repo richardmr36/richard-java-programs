@@ -20,4 +20,11 @@ public class LongestIncreasingSubsequenceTest {
         LongestIncreasingSubsequence lis = new LongestIncreasingSubsequence();
         Assert.assertEquals(5, lis.getSubsequenceUsingDp(arr, arr.length));
     }
+
+    @Test
+    public void getSubsequenceUsingMemoization() {
+        int[] arr = {10, 22, 9, 33, 21, 50, 41, 60};
+        LongestIncreasingSubsequence lis = new LongestIncreasingSubsequence();
+        Assert.assertEquals(5, lis.getSubsequenceUsingMemoization(arr, arr.length, new int[arr.length]));
+    }
 }

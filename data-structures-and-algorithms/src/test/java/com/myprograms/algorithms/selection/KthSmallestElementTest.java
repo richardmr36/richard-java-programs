@@ -13,5 +13,6 @@ public class KthSmallestElementTest {
         int expected = 5;
         Assert.assertEquals(expected, KthSmallestElement.findUsingSort(arr, k));
         Assert.assertEquals(expected, KthSmallestElement.findUsingMinHeap(arr, k));
+        Assert.assertEquals(expected, KthSmallestElement.findUsingPriorityQueue(arr, k));
     }
 }

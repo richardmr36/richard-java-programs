@@ -1,11 +1,11 @@
 package com.myprograms.algorithms.dynamicprogramming;
 
 public class LongestCommonSubsequence {
-    public int findLongestCommonSubsequenceUsingRecursion(String str1, String str2) {
+    public static int findLongestCommonSubsequenceUsingRecursion(String str1, String str2) {
         return findLongestCommonSubsequenceUsingRecursion(str1.toCharArray(), str2.toCharArray(), str1.length(), str2.length());
     }
 
-    private int findLongestCommonSubsequenceUsingRecursion(char[] chars1, char[] chars2, int m, int n) {
+    private static int findLongestCommonSubsequenceUsingRecursion(char[] chars1, char[] chars2, int m, int n) {
         if (m == 0 || n == 0)
             return 0;
 
@@ -17,11 +17,11 @@ public class LongestCommonSubsequence {
 
     }
 
-    public int findLongestCommonSubsequenceUsingMemoization(String str1, String str2) {
+    public static int findLongestCommonSubsequenceUsingMemoization(String str1, String str2) {
         return findLongestCommonSubsequenceUsingMemoization(str1.toCharArray(), str2.toCharArray(), str1.length(), str2.length(), new int[str1.length()][str2.length()]);
     }
 
-    private int findLongestCommonSubsequenceUsingMemoization(char[] chars1, char[] chars2, int m, int n, int[][] memo) {
+    private static int findLongestCommonSubsequenceUsingMemoization(char[] chars1, char[] chars2, int m, int n, int[][] memo) {
         if (m == 0 || n == 0)
             return 0;
 
@@ -37,11 +37,13 @@ public class LongestCommonSubsequence {
         return memo[m - 1][n - 1];
     }
 
-    public int findLongestCommonSubsequenceUsingDp(String str1, String str2) {
-        return findLongestCommonSubsequenceUsingDp(str1.toCharArray(), str2.toCharArray(), str1.length(), str2.length());
-    }
+    public static int findLongestCommonSubsequenceUsingDp(String str1, String str2) {
+        int m = str1.length();
+        int n = str2.length();
 
-    private int findLongestCommonSubsequenceUsingDp(char[] chars1, char[] chars2, int m, int n) {
+        char[] chars1 = str1.toCharArray();
+        char[] chars2 = str2.toCharArray();
+
         int[][] LCS = new int[m + 1][n + 1];
         LCS[0][0] = 0;
         for (int i = 1; i <= m; i++) {

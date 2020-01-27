@@ -1,5 +1,9 @@
 package com.myprograms.algorithms.selection;
 
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
 import com.myprograms.algorithms.heap.Heap;
 import com.myprograms.algorithms.heap.MinIntHeap;
 import com.myprograms.algorithms.sorting.MergeSort;
@@ -19,5 +23,20 @@ public class KthSmallestElement {
             heap.poll();
 
         return heap.poll();
+    }
+
+    public static int findUsingPriorityQueue(int[] arr, int k) {
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>(Comparator.reverseOrder());
+        for (int i = 0; i < k; i++)
+            priorityQueue.add(arr[i]);
+
+        for (int i = k; i < arr.length; i++) {
+            if (arr[i] < priorityQueue.peek()) {
+                priorityQueue.poll();
+                priorityQueue.add(arr[i]);
+            }
+        }
+
+        return priorityQueue.peek();
     }
 }
