@@ -84,4 +84,24 @@ public class BinaryTreeTest {
         b.right.right = new Node(4);
         Assert.assertTrue(tree.isMirrorOfEachOther(a, b));
     }
+
+    @Test
+    public void testIsBalancedTree() {
+        BinaryTree tree = new BinaryTree();
+        Node a = new Node(1);
+        a.left = new Node(2);
+        a.right = new Node(3);
+        a.left.left = new Node(4);
+        a.left.right = new Node(5);
+
+        Assert.assertTrue(tree.isBalancedTree(a));
+
+        Node b = new Node(1);
+        b.left = new Node(2);
+        b.right = new Node(3);
+        b.left.left = new Node(4);
+        b.left.left.right = new Node(5);
+
+        Assert.assertFalse(tree.isBalancedTree(b));
+    }
 }

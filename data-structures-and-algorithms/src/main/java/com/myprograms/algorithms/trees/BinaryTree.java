@@ -116,4 +116,26 @@ public class BinaryTree {
         return left.data == right.data &&
                 isMirrorOfEachOther(left.left, right.right) && isMirrorOfEachOther(left.right, right.left);
     }
+
+    public boolean isBalancedTree(Node root) {
+        return getBalancedHeight(root) > -1;
+    }
+
+    private int getBalancedHeight(Node node) {
+        if(node == null)
+            return 0;
+
+        int heightOfLeftSubTree = getBalancedHeight(node.left);
+        int heightOfRightSubTree = getBalancedHeight(node.right);
+
+        if(heightOfLeftSubTree == -1 || heightOfRightSubTree == -1)
+            return -1;
+
+        if(Math.abs(heightOfLeftSubTree - heightOfRightSubTree) > 1)
+            return -1;
+
+        if(heightOfLeftSubTree > heightOfRightSubTree)
+            return heightOfLeftSubTree + 1;
+        return heightOfRightSubTree + 1;
+    }
 }
