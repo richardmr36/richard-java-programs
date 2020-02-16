@@ -32,6 +32,14 @@ public class LRUCache {
             System.out.print(val+ "  ");
     }
 
+    public int[] getTable() {
+        int[] result = new int[deque.size()];
+        int index = 0;
+        for(int val : deque)
+            result[index++] = val;
+        return result;
+    }
+
     //LRUCache as a data structure
     public int get(int val) {
         if(table.contains(val)) {

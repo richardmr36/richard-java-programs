@@ -1,5 +1,7 @@
 package com.myprograms.algorithms.bitmanipulation;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -31,5 +33,42 @@ public class BitwiseOperatorsTest {
     @Test
     public void isMultipleOfThree() {
         assertTrue(BitwiseOperators.isMultipleOfThree(21));
+    }
+
+    @Test
+    public void areBothIntegersWithOppositeSigns() {
+        assertTrue(BitwiseOperators.areBothIntegersWithOppositeSigns(21, -2));
+    }
+
+    @Test
+    public void numPlusOne() {
+        assertEquals(22, BitwiseOperators.numPlusOne(21));
+    }
+
+    @Test
+    public void multiplyNumWithThreePointFive() {
+        assertEquals(7, BitwiseOperators.multiplyNumWithThreePointFive(2));
+    }
+
+    @Test
+    public void multiplyNumWithSeven() {
+        assertEquals(14, BitwiseOperators.multiplyNumWithSeven(2));
+    }
+
+    @Test
+    public void multiplyNumWithFifteen() {
+        assertEquals(30, BitwiseOperators.multiplyNumWithFifteen(2));
+    }
+
+    @Test
+    public void multiplyTwoNumbersUsingRussianPeasantMethod() {
+        assertEquals(40, BitwiseOperators.multiplyTwoNumbersUsingRussianPeasantMethod(5, 8));
+        assertEquals(45, BitwiseOperators.multiplyTwoNumbersUsingRussianPeasantMethod(5, 9));
+    }
+
+    @Test
+    public void isDivisibleByEight() {
+        assertFalse(BitwiseOperators.isDivisibleByEight(21));
+        assertTrue(BitwiseOperators.isDivisibleByEight(24));
     }
 }

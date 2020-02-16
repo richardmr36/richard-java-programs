@@ -15,7 +15,7 @@ public class Knapsack {
         this.knapsackTable = new int[noOfItems + 1][knapsackCapacity + 1];
     }
 
-    public void findKnapsack() {
+    public int findKnapsack() {
 
         for (int i = 1; i <= noOfItems; i++) {
             for (int w = 1; w <= knapsackCapacity; w++) {
@@ -29,7 +29,8 @@ public class Knapsack {
             }
         }
 
-        showItemsIncludedInResult();
+        //showItemsIncludedInResult();
+        return knapsackTable[noOfItems][knapsackCapacity];
     }
 
     public void showItemsIncludedInResult() {
@@ -43,7 +44,7 @@ public class Knapsack {
         }
     }
 
-    public int findKnapsackRecursion(int[] val, int[] weight, int W, int n) {
+    public static int findKnapsackRecursion(int[] val, int[] weight, int W, int n) {
         if (n == 0 || W == 0)
             return 0;
 

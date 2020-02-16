@@ -50,7 +50,7 @@ public class SubarrayProblemsTest {
     @Test
     public void testFindTotalSumOfAllPossibleSubarrays() {
         int[] arr = {3, 1, 2, 3};
-        Assert.assertEquals(20, SubarrayProblems.findTotalSumOfAllPossibleSubarrays(arr));
+        Assert.assertEquals(42, SubarrayProblems.findTotalSumOfAllPossibleSubarrays(arr));
     }
 
     @Test

@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Anagram {
     public static int NUMBER_OF_ALPHABETS = 26;
-    public static int NUMBER_OF_ASCII_CHAR = 128;
+    public static int NUMBER_OF_ASCII_CHAR = 1 << 8; //256
 
     public static boolean isAnagram_method1(String str1, String str2) {
         return sortedString(str1).equalsIgnoreCase(sortedString(str2));
@@ -14,6 +14,9 @@ public class Anagram {
 
         if (str1.length() != str2.length())
             return false;
+
+        str1 = str1.toLowerCase();
+        str2 = str2.toLowerCase();
 
         int[] letters = new int[NUMBER_OF_ASCII_CHAR];
         for (char c : str1.toCharArray())

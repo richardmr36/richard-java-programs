@@ -99,4 +99,21 @@ public class BinaryTree {
         return 1 + countNodes(root.left) + countNodes(root.right);
     }
 
+    public boolean isSymmetric(Node root) {
+        if(root == null)
+            throw new IllegalArgumentException("Root is null");
+
+        return isMirrorOfEachOther(root.left, root.right);
+    }
+
+    public boolean isMirrorOfEachOther(Node left, Node right) {
+        if(left == null && right == null)
+            return true;
+
+        if(left == null || right == null)
+            return false;
+
+        return left.data == right.data &&
+                isMirrorOfEachOther(left.left, right.right) && isMirrorOfEachOther(left.right, right.left);
+    }
 }

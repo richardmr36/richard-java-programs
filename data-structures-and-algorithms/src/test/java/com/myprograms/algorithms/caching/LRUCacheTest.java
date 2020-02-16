@@ -1,7 +1,5 @@
 package com.myprograms.algorithms.caching;
 
-import static org.junit.Assert.*;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -16,7 +14,7 @@ public class LRUCacheTest {
         lruCache.refer(1);
         lruCache.refer(4);
         lruCache.refer(5);
-        lruCache.displayTable();
+        Assert.assertArrayEquals(new int[]{5, 4, 1, 3}, lruCache.getTable());
     }
 
     @Test

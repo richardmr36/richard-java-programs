@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class WordLadder {
 
-    private static class WordNode {
+    static class WordNode {
         String word;
         int chainLength;
 

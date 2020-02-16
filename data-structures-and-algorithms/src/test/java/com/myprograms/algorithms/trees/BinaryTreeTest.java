@@ -1,5 +1,6 @@
 package com.myprograms.algorithms.trees;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -64,5 +65,23 @@ public class BinaryTreeTest {
         root.left.left.right = new Node(2);
         root.left.right.left = new Node(1);
         return root;
+    }
+
+
+    @Test
+    public void testIsMirrorOfEachOther() {
+        BinaryTree tree = new BinaryTree();
+        Node a = new Node(1);
+        Node b = new Node(1);
+        a.left = new Node(2);
+        a.right = new Node(3);
+        a.left.left = new Node(4);
+        a.left.right = new Node(5);
+
+        b.left = new Node(3);
+        b.right = new Node(2);
+        b.right.left = new Node(5);
+        b.right.right = new Node(4);
+        Assert.assertTrue(tree.isMirrorOfEachOther(a, b));
     }
 }
