@@ -13,6 +13,7 @@
         <module>data-structures-and-algorithms</module>
         <module>jaxb</module>
         <module>miscellaneous</module>
+        <module>concurreny-and-multithreading</module>
     </modules>
     <dependencyManagement>
         <dependencies>
@@ -21,6 +22,11 @@
                 <artifactId>junit</artifactId>
                 <version>4.11</version>
                 <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>28.2-jre</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

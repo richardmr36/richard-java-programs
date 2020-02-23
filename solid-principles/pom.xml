@@ -11,7 +11,7 @@
 	<artifactId>solid-principles</artifactId>
 	<version>1.0-SNAPSHOT</version>
 
-	<name>solid-principles</name>
+	<name>Solid Principles</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
