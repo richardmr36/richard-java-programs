@@ -1,21 +1,44 @@
 package com.myprograms.algorithms.linkedlist;
 
 public class CycleDetector {
-    public boolean isCycleDetected(Node head) {
-        if(head == null) {
+    public static boolean isCycleDetected(Node head) {
+        if(head == null || head.next == null)
             return false;
-        }
 
-        Node slow = head;
-        Node fast = head.next;
+        Node tortoise = head.next;
+        Node hare = head.next.next;
 
-        while(fast!= null && fast.next!=null) {
-            if(fast == slow)
+        while (hare != null && hare.next != null) {
+            if (hare == tortoise)
                 return true;
-            fast = fast.next.next;
-            slow = slow.next;
+            hare = hare.next.next;
+            tortoise = tortoise.next;
         }
 
         return false;
+    }
+
+    public static Node findEntryPointOfCycle(Node head) {
+        if(head == null || head.next == null)
+            return null;
+
+        Node tortoise = head.next;
+        Node hare = head.next.next;
+
+        while (hare != null && hare.next != null) {
+            if(hare == tortoise) {
+                tortoise = head;
+                while (hare != tortoise) {
+                    hare = hare.next;
+                    tortoise = tortoise.next;
+                }
+                return hare;
+            }
+
+            tortoise = tortoise.next;
+            hare = hare.next.next;
+        }
+
+        return null;
     }
 }

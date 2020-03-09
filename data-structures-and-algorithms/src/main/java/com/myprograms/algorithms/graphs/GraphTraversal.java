@@ -63,10 +63,11 @@ public class GraphTraversal {
 
     public static String doTopologicalSort(Graph graph) {
         HashSet<Integer> visited = new HashSet<>();
+        HashSet<Integer> visitedToCheckForCycle = new HashSet<>();
         Deque<Node> stack = new ArrayDeque<>();
         for (Integer id : graph.nodes.keySet())
             if (!visited.contains(id))
-                doTopologicalSort(graph.getNode(id), visited, stack);
+                doTopologicalSort(graph.getNode(id), visited, visitedToCheckForCycle, stack);
 
         String topSortOrder = String.valueOf(stack.pop().id);
         while (!stack.isEmpty())
@@ -75,14 +76,19 @@ public class GraphTraversal {
         return topSortOrder;
     }
 
-    private static void doTopologicalSort(Node s, HashSet<Integer> visited, Deque<Node> stack) {
+    private static void doTopologicalSort(Node s, HashSet<Integer> visited, HashSet<Integer> visitedToCheckForCycle, Deque<Node> stack) {
+        if(visitedToCheckForCycle.contains(s.id))
+            throw new IllegalStateException("Cycle exists in the graph!");
+
         if (visited.contains(s.id))
             return;
 
-        visited.add(s.id);
+        visitedToCheckForCycle.add(s.id);
         for (Node node : s.adjacent)
-            doTopologicalSort(node, visited, stack);
+            doTopologicalSort(node, visited, visitedToCheckForCycle, stack);
 
+        visited.add(s.id);
+        visitedToCheckForCycle.remove(s.id);
         stack.push(s);
     }
 

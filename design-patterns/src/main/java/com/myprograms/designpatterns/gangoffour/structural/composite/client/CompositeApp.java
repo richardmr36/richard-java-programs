@@ -34,7 +34,7 @@ public class CompositeApp {
         rachelle.manages(robert);
         rachelle.manages(niels);
 
-        String directory = "./src/main/java/com/myprograms/designpatterns/structural/composite/client/";
+        String directory = "./src/main/java/com/myprograms/designpatterns/gangoffour/structural/composite/client/";
         addPropertiesFileFolderToClasspath(new File(directory));
 
         WorkLoader workLoad = new WorkLoader("work.properties");

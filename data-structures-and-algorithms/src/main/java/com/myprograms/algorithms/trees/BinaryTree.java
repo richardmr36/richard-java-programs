@@ -15,7 +15,7 @@ public class BinaryTree {
         if (root.data < min || root.data > max)
             return false;
 
-        return isBstUsingMinMax(root.left, min, root.data - 1) &&
+        return isBstUsingMinMax(root.left, min, root.data) &&
                 isBstUsingMinMax(root.right, root.data + 1, max);
 
     }

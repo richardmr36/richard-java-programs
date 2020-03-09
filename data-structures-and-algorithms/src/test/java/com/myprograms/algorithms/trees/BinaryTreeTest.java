@@ -26,17 +26,31 @@ public class BinaryTreeTest {
     }
 
     @Test
-    public void checkForBstUsingMinMax() {
+    public void checkForBstUsingMinMaxWithCorrectTree() {
         BinaryTree tree = new BinaryTree();
         Node root = buildCorrectTree();
-        assertTrue("This is not a BST", tree.checkForBstUsingMinMax(root));
+        assertTrue("This is a BST", tree.checkForBstUsingMinMax(root));
     }
 
     @Test
-    public void checkForBst() {
+    public void checkForBstUsingMinMaxWithWrongTree() {
+        BinaryTree tree = new BinaryTree();
+        Node root = buildWrongTree();
+        assertFalse("This is not a BST", tree.checkForBstUsingMinMax(root));
+    }
+
+    @Test
+    public void checkForBstWithWrongTree() {
         BinaryTree tree = new BinaryTree();
         Node root = buildWrongTree();
         assertFalse("This is not a BST", tree.checkForBst(root));
+    }
+
+    @Test
+    public void checkForBstWithCorrectTree() {
+        BinaryTree tree = new BinaryTree();
+        Node root = buildCorrectTree();
+        assertTrue("This is a BST", tree.checkForBst(root));
     }
 
     @Test
