@@ -1,4 +1,4 @@
-package com.myprograms.test;
+package com.myprograms.jaxb;
 
 import java.io.File;
 
